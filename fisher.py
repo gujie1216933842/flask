@@ -3,6 +3,8 @@ from flask import Flask
 
 app = Flask(__name__)
 
+'''如果路由配置成  /hello/会重定向/hello'''
+
 
 @app.route('/hello')
 def hello():
@@ -10,4 +12,5 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run()
+    '''加入debug模式'''
+    app.run(debug=True)

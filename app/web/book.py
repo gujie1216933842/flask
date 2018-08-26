@@ -1,20 +1,21 @@
-from flask import jsonify, request ,Blueprint
+from flask import jsonify, request, Blueprint
 from app.libs.helper import is_isbn_or_key
 from app.spider.yushu_book import YuShuBook
 from app.forms.book import SearchForm
 from . import web
 
+
 # 蓝图  buleprint
 # web = Blueprint('web', __name__)
 
-@web.route('/book/search/')
-def search(q, page):
+@web.route('/book/search')
+def search():
     '''
     :param q:
     :param page:
     :return:
     '''
-
+    print('haha:%s' % (request.args['q']))
     form = SearchForm(request.args)
     if form.validate():
         q = form.q.data.strip()
@@ -24,7 +25,7 @@ def search(q, page):
         if isbn_or_key == 'isbn':
             result = YuShuBook.search_isbn(q)
         else:
-            result = YuShuBook.search_keyword(q)
+            result = YuShuBook.search_keyword(q, page)
 
         return jsonify(result)
 

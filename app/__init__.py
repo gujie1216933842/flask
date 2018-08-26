@@ -21,5 +21,6 @@ def create_app():
 '''蓝图要注册在app中'''
 
 
-def register_buleprint():
-    pass
+def register_buleprint(app):
+    from app.web import web
+    app.register_buleprint(web)

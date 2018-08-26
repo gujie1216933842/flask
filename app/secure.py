@@ -4,3 +4,5 @@
 '''
 
 DEBUG = True
+
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123@47.97.165.75:3306/fisher'

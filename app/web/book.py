@@ -29,4 +29,4 @@ def search(q, page):
         return jsonify(result)
 
     else:
-        return jsonify({'msg': '参数失败'})
+        return jsonify(form.errors)

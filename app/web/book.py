@@ -1,13 +1,13 @@
-from flask import jsonify, request
-from fisher import app
+from flask import jsonify, request ,Blueprint
 from app.libs.helper import is_isbn_or_key
 from app.spider.yushu_book import YuShuBook
 from app.forms.book import SearchForm
 
 
 # 蓝图  buleprint
+web = Blueprint('web', __name__)
 
-@app.route('/book/search/')
+@web.route('/book/search/')
 def search(q, page):
     '''
     :param q:

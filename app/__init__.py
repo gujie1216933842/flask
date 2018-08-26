@@ -1,8 +1,9 @@
 '''
 作用:可以让python文件变成一个包
-     初始化代码
+     肩负着包里面初始化代码的工作
 
 '''
+
 from flask import Flask
 from app.models.book import db
 

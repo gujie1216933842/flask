@@ -2,10 +2,10 @@ from flask import jsonify, request ,Blueprint
 from app.libs.helper import is_isbn_or_key
 from app.spider.yushu_book import YuShuBook
 from app.forms.book import SearchForm
-
+from . import web
 
 # 蓝图  buleprint
-web = Blueprint('web', __name__)
+# web = Blueprint('web', __name__)
 
 @web.route('/book/search/')
 def search(q, page):

@@ -1,0 +1,15 @@
+certifi==2018.1.18
+chardet==3.0.4
+ethtool==0.6
+idna==2.6
+impacket==0.9.15
+iniparse==0.3.1
+iwlib==1.0
+ordereddict==1.2
+pyasn1==0.4.2
+pycurl==7.19.0
+pygpgme==0.1
+requests==2.18.4
+urlgrabber==3.9.1
+urllib3==1.22
+yum-metadata-parser==1.1.2

@@ -1,17 +1,27 @@
 class BookViewModel(object):
-    def package_sing(self, data, keyword):
+    @classmethod
+    def package_sing(cls, data, keyword):
         returned = {
             'books': [],
             'total': 0,
-            'keywords': keyword
+            'keyword': keyword
         }
         if data:
             returned['total'] = 1
+            returned['books'] = [cls.__cut_book_data(data)]
+        return returned
 
-    def package_collect(self):
-        pass
+    @classmethod
+    def package_collect(cls, data, keyword):
+        returned = {
+            'books': [],
+            'total': 0,
+            'keyword': [cls.__cut_book_data(data)  for book in data['book']]
+        }
+        return returned
 
-    def __cut_book_data(self, data):
+    @classmethod
+    def __cut_book_data(cls, data):
         book = {
             'title': data['title'],
             'publisher': data['publisher'],

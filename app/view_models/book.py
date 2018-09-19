@@ -13,11 +13,15 @@ class BookViewModel(object):
 
     @classmethod
     def package_collect(cls, data, keyword):
+        print(data)
         returned = {
             'books': [],
             'total': 0,
-            'keyword': [cls.__cut_book_data(data)  for book in data['book']]
+            'keyword': keyword
         }
+        if data:
+            returned['total'] = data['total']
+            returned['books'] = [cls.__cut_book_data(book) for book in data['books']]
         return returned
 
     @classmethod
@@ -25,10 +29,11 @@ class BookViewModel(object):
         book = {
             'title': data['title'],
             'publisher': data['publisher'],
-            'pages': data['pages'],
+            'pages': data['pages'] or '',
             'author': '、'.join(data['author']),
             'price': data['price'],
-            'summary': data['summary'],
+            'summary': data['summary'] or '',
             'image': data['image'],
 
         }
+        return book

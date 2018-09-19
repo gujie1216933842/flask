@@ -16,7 +16,7 @@ def search():
     :param page:
     :return:
     '''
-    print('haha:%s' % (request.args['q']))
+    # print('haha:%s' % (request.args['q']))
     form = SearchForm(request.args)
     if form.validate():
         q = form.q.data.strip()

@@ -4,6 +4,7 @@ from app.spider.yushu_book import YuShuBook
 from app.forms.book import SearchForm
 from . import web
 from app.view_models.book import *
+import json
 
 
 # 蓝图  buleprint
@@ -18,19 +19,19 @@ def search():
     '''
     # print('haha:%s' % (request.args['q']))
     form = SearchForm(request.args)
+    books = BookCollection()
     if form.validate():
         q = form.q.data.strip()
         page = form.page.data
 
         isbn_or_key = is_isbn_or_key(q)
+        yushu_book = YuShuBook()
         if isbn_or_key == 'isbn':
-            result = YuShuBook.search_isbn(q)
-            result = BookViewModel.package_sing(result, q)
+            yushu_book.search_by_isbn(q)
         else:
-            result = YuShuBook.search_keyword(q, page)
-            result = BookViewModel.package_collect(result, q)
-
-        return jsonify(result)
+            yushu_book.search_by_keyword(q, page)
+        books.fill(yushu_book, q)
+        return json.dumps(books, default=lambda o: o.__dict__)
 
     else:
         return jsonify(form.errors)

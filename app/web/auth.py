@@ -1,6 +1,7 @@
 from . import web
 
 
-@web.route('/pending')
-def pending():
+
+@web.route('/register', methods=['GET', 'POST'])
+def register():
     pass

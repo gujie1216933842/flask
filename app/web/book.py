@@ -1,4 +1,4 @@
-from flask import jsonify, request, Blueprint
+from flask import jsonify, request, Blueprint,flash,render_template
 from app.libs.helper import is_isbn_or_key
 from app.spider.yushu_book import YuShuBook
 from app.forms.book import SearchForm
@@ -35,3 +35,25 @@ def search():
 
     else:
         return jsonify(form.errors)
+
+@web.route('/book/<isbn>/detail')
+def book_detail(isbn):
+    pass
+
+
+
+
+@web.route('/test')
+def test():
+    r = {
+        'name': None,
+        'age': 18
+    }
+
+    r1 = {}
+
+    flash('hello,qiyue', category='error')
+    flash('hello,jiuyue', category='warning')
+
+    # 模板
+    return render_template('', data=r, data1=r1)

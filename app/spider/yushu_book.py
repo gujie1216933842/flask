@@ -21,7 +21,7 @@ class YuShuBook():
         result = HTTP.get(url)
         self.__fill_collection(result)
 
-    def calculate_start(self,page):
+    def calculate_start(self, page):
         return (page - 1) * current_app.config['PER_PAGE']
 
     def __fill_single(self, data):
@@ -32,3 +32,7 @@ class YuShuBook():
     def __fill_collection(self, data):
         self.total = data['total']
         self.books = data['books']
+
+    @property
+    def first(self):
+        return self.books[0] if self.total >= 1 else None

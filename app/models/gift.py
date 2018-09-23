@@ -1,7 +1,14 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean
-from app.models.base import db
+from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey, SmallInteger
+from sqlalchemy.orm import relationships
+from app.models.base import Base
 
 
-class Gift(db.Model):
+class Gift(Base):
     id = Column(Integer, primary_key=True)
-    nickname = Column(Boolean, nullable=False)
+    user = relationships('User')
+    uid = Column(Integer, ForeignKey('user.id'))
+    launched = Column(Boolean, nullable=False)
+    isbn = Column(String(15), nullable=False)
+    # book = relationships('Book')
+    # bid = Column(Integer, ForeignKey('book.id'))
+    status = Column(SmallInteger, default=0)

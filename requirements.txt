@@ -2,7 +2,7 @@ certifi==2018.1.18
 chardet==3.0.4
 ethtool==0.6
 idna==2.6
-impacket==0.9.15
+impacket==0.9.23
 iniparse==0.3.1
 iwlib==1.0
 ordereddict==1.2
